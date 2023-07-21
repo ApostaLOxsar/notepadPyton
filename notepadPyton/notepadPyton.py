@@ -1,30 +1,22 @@
-﻿import interf 
+﻿import interf
+import logic
 from datetime import datetime
-import json
 
 
-interface = interf.interfRU()
-
-curentDay = datetime.today()
-print("%d-%d-%d %d:%d:%d" %(curentDay.day, curentDay.month, curentDay.year, curentDay.hour, curentDay.minute, curentDay.second));
+interface = interf.InterfRU()
 
 tempTitl = "temptitle"
-tempForTest = {"title": tempTitl, "cyrentTime" : str(curentDay), "editTime": str(curentDay), "content": "1234124"}
+note1 = {"numberNotes": 1, "title": tempTitl, "cyrentTime" : str(logic.curenttime()), "editTime": str(logic.curenttime()), "content": "1234124"}
+note2 = {"numberNotes": 2, "title": tempTitl, "cyrentTime" : str(logic.curenttime()), "editTime": str(logic.curenttime()), "content": "dfghdfg"}
 
-print(tempForTest)
+notepadArray = []
+notepadArray.append(note1)
+notepadArray.append(note2)
 
 
-#with open('data.json', 'a') as f:
- #   json.dump(tempForTest, f, indent='\t')
+logic.saveNotesToFile(notepadArray)
+notepadArray, flagLoadFile = logic.loadNotesFromFile()
 
-#with open('data.json') as f:
- #   templates = json.load(f)
+#logic.printAllNotes(notepadArray)
 
-f = open('data.json')
-json = json.load(f)
-
-for i in json:
-    print(i + " : " +json[i])
-
-#date_time_obj = datetime.strptime(templates["cyrentTime"], '%Y-%m-%d %H:%M:%S.%f')
-
+#logic.printNotes(notepadArray, datetime.strptime(("2023-07-21 22:07:54")[:19], '%Y-%m-%d %H:%M:%S'), datetime.strptime(("2023-07-21 22:07:54")[:19], '%Y-%m-%d %H:%M:%S'))
