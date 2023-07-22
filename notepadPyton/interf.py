@@ -1,4 +1,79 @@
-﻿class InterfRU:
+﻿from abc import ABC, abstractmethod
+
+class Interf(ABC):
+    @abstractmethod
+    def __init__(self):
+        pass
+
+    @abstractmethod
+    def saveNoteToFile(self):
+        pass
+
+    @abstractmethod
+    def readNoteToFile(self):
+        pass
+
+    @abstractmethod
+    def addNote(self):
+        pass
+
+    @abstractmethod
+    def editNote(self):
+        pass
+
+    @abstractmethod
+    def deletNote(self):
+        pass
+
+    @abstractmethod
+    def exitNotepade(self):
+        pass
+
+    @abstractmethod
+    def errorReadFile(self):
+        pass
+
+    @abstractmethod
+    def inputTitleForNotes(self):
+        pass
+
+    @abstractmethod
+    def inputNumberForEdit(self):
+        pass
+
+    @abstractmethod
+    def noForNoEdit(self):
+        pass
+
+    @abstractmethod
+    def noEdit(self):
+        pass
+
+    @abstractmethod
+    def noInputInt(self):
+        pass
+    @abstractmethod
+    def outDateVersion(self):
+        pass
+
+    @abstractmethod
+    def inputNumberForDelete(self):
+        pass
+
+    @abstractmethod
+    def noForNoEdit(self):
+        pass
+
+    @abstractmethod
+    def noForNoDelete(self):
+        pass
+
+
+    @abstractmethod
+    def AllOk(self):
+        pass
+
+class InterfRU(Interf):
     def __init__(self):
         print("Выбран русский язык")
     
@@ -22,9 +97,41 @@
     
     def errorReadFile(self):
         print("При чтении файла произошла, вероятно он не существует")
-    
 
-class InterfEN:
+    def inputTitleForNotes(self):
+        print("Введите название заметки")
+
+    def inputContentForNotes(self):
+        print("Введите заметку")
+
+    def inputNumberForEdit(self):
+        print("Введите номер заметки для изменение")
+
+    def noForNoEdit(self):
+        print("Введите no если нет необходимости редактировать")
+
+    def noEdit(self):
+        print("Редактирование не удалось, заметка не найдена")
+
+    def noInputInt(self):
+        print("Введено не  число")
+
+    def outDateVersion(self):
+        print("Преведущая версия:")
+
+    def inputNumberForDelete(self):
+        print("Введите номер для удаление")
+
+    def noForNoDelete(self):
+        print("Вот вам замеетка \nВведите no если передумали")
+
+    def noForNoDelete(self):
+        print("Удаление не удалось, заметка не найдена")
+    
+    def AllOk(self):
+        print("Успешно")
+
+class InterfEN(Interf):
     def __init__(self):
         print("Selected language: English")
     
