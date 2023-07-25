@@ -17,15 +17,15 @@ def saveNotesToFile(notepadArray):
         json.dump(notepadArray, f, indent='\t')
 
 
-def loadNotesFromFile():
+def loadNotesFromFile(notepadArray):
     try:
         with open('data.json') as f:
             allNotes = json.load(f)
         if os.path.getsize("data.json") == 0:
             return "", False
         return allNotes, True
-    except FileNotFoundError:
-        return "", False
+    except Exception:
+        return notepadArray, False
 
 def printNotes(notepadArray, fromtime, beforTime):
     for i in notepadArray: 
@@ -45,9 +45,9 @@ def printAllNotes(notepadArray):
         count += 1
         print("")
 
+
 def addNotes(numberNotes, interface):
-    
-    numberNotes  =  numberNotes  + 1
+    numberNotes  =  len(numberNotes)  + 1
     
     cyrentTime  = editTime  = str(curenttime())
     
@@ -67,6 +67,7 @@ def editNotes(arrayNotes, interface):
     except Exception:
         interface.noInputInt()
         return arrayNotes
+
     if 0 < numberNotes <= len(arrayNotes):
         interface.inputTitleForNotes()
         interface.noForNoEdit()
@@ -99,8 +100,11 @@ def deletNotes(arrayNotes, interface):
     except Exception:
         interface.noInputInt()
         return arrayNotes
+
     if 0 < numberNotes <= len(arrayNotes):
         arrayNotes.pop(numberNotes - 1)
         interface.AllOk()
+        return arrayNotes
     else:
         interface.noForNoDelete()
+        return arrayNotes

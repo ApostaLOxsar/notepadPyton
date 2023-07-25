@@ -10,6 +10,10 @@ class Interf(ABC):
         pass
 
     @abstractmethod
+    def choice(self):
+        pass
+
+    @abstractmethod
     def readNoteToFile(self):
         pass
 
@@ -71,6 +75,11 @@ class Interf(ABC):
 
     @abstractmethod
     def AllOk(self):
+        pass
+
+
+    @abstractmethod
+    def inputDate(self):
         pass
 
 class InterfRU(Interf):
@@ -130,6 +139,24 @@ class InterfRU(Interf):
     
     def AllOk(self):
         print("Успешно")
+
+    def choice(self):
+        print("1 - сохранить")
+        print("2 - прочитать")
+        print("3 - добавить")
+        print("4 - редактировать")
+        print("5 - удалить")
+        print("6 - выборка по дате")
+        print("7 - выйти")
+
+    def inputDate(self):
+        print("Введите дату формата: yyyy-mm-dd hh:mm:ss")
+        
+
+
+
+
+
 
 class InterfEN(Interf):
     def __init__(self):
