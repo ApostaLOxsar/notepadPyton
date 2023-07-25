@@ -28,11 +28,16 @@ def loadNotesFromFile(notepadArray):
         return notepadArray, False
 
 def printNotes(notepadArray, fromtime, beforTime):
-    for i in notepadArray: 
-        if fromtime <= datetime.strptime((i["editTime"])[:19], '%Y-%m-%d %H:%M:%S') <= beforTime:
-            for j in i:
-                print(j + " : " + str(i[j]))
-            print("")
+    try:
+        fromtime = datetime.strptime(fromtime[:19], "%Y-%m-%d %H:%M:%S")
+        beforTime = datetime.strptime(beforTime[:19], "%Y-%m-%d %H:%M:%S")
+        for i in notepadArray: 
+            if fromtime <= datetime.strptime((i["editTime"])[:19], '%Y-%m-%d %H:%M:%S') <= beforTime:
+                for j in i:
+                    print(j + " : " + str(i[j]))
+                print("")
+    except Exception:
+        print("((")
 
 
 

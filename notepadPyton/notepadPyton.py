@@ -77,11 +77,7 @@ while not flagStop:
         a = input()
         interface.inputDate()
         b = input()
-        logic.printNotes(
-            notepadArray,
-            datetime.strptime(a[:19], "%Y-%m-%d %H:%M:%S"),
-            datetime.strptime(b[:19], "%Y-%m-%d %H:%M:%S"),
-        )
+        logic.printNotes(notepadArray, a, b)
         continue
     elif number == 7:
         flagStop = True
